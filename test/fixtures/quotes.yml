@@ -1,7 +1,10 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyText
+first:
+  name: First Quote
 
-two:
-  name: MyText
+second:
+  name: Second Quote
+
+third:
+  name: Third Quote
