@@ -3,7 +3,7 @@ require "application_system_test_case"
 class QuotesTest < ApplicationSystemTestCase
 
   setup do
-    @quote = quotes(:first) # Reference to the first fixture quote
+    @quote = quotes.ordered.first # Reference to the first fixture quote
   end
 
   test "Creating a new quote" do
@@ -13,14 +13,14 @@ class QuotesTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Quotes"
 
     # When we click on the link with the text "New quote"
-    # we expect to land on a page with the title "New quote"
+    #
     click_on "New quote"
-    assert_selector "h1", text: "New quote"
-
-    # When we fill in the name input with "Capybara quote"
-    # and we click on "Create Quote"
     fill_in "Name", with: "Capybara quote"
+
+    assert_selector "h1", text: "New quote"
     click_on "Create Quote"
+
+  
 
     # We expect to be back on the page with the title "Quotes"
     # and to see our "Capybara quote" added to the list
@@ -40,9 +40,9 @@ class QuotesTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Quotes"
 
     click_on "Edit", match: :first
-    assert_selector "h1", text: "Edit quote"
-
     fill_in "Name", with: "Updated quote"
+
+    assert_selector "h1", text: "Edit quote"
     click_on "Update Quote"
 
     assert_selector "h1", text: "Quotes"
